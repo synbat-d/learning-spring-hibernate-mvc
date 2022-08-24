@@ -1,10 +1,20 @@
 package withXmlandAnnotations;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("beanPerson")
 public class Person {
+
     private Pet pet;
+
+    @Autowired
+
+    public Person(@Qualifier("beanDog") Pet pet) {
+        this.pet = pet;
+    }
+
     private String surname;
     private int age;
 
